@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador de Nível de Herói</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Classificador de Nível de Herói</h1>
+        <input type="text" id="nome" placeholder="Nome do Herói" required>
+        <input type="number" id="experiencia" placeholder="Experiência (XP)" required>
+        <button onclick="classificarHeroi()">Classificar</button>
+        <p id="resultado" class="resultado"></p>
+    </div>
+
+    <script>
+        function classificarHeroi() {
+            // Obtendo os valores do formulário
+            let nome = document.getElementById("nome").value;
+            let experiencia = parseInt(document.getElementById("experiencia").value);
+            let nivel;
+            let cor;
+
+            // Estrutura de decisão para determinar o nível com base na experiência
+            if (experiencia < 1000) {
+                nivel = "Ferro";
+                cor = "gray";
+            } else if (experiencia >= 1001 && experiencia <= 2000) {
+                nivel = "Bronze";
+                cor = "#cd7f32"; // Cor do bronze
+            } else if (experiencia >= 2001 && experiencia <= 5000) {
+                nivel = "Prata";
+                cor = "silver";
+            } else if (experiencia >= 5001 && experiencia <= 7000) {
+                nivel = "Ouro";
+                cor = "gold";
+            } else if (experiencia >= 7001 && experiencia <= 8000) {
+                nivel = "Platina";
+                cor = "#e5e4e2"; // Cor do platina
+            } else if (experiencia >= 8001 && experiencia <= 9000) {
+                nivel = "Ascendente";
+                cor = "#8a2be2"; // Cor do ascendente
+            } else if (experiencia >= 9001 && experiencia <= 10000) {
+                nivel = "Imortal";
+                cor = "red"; // Cor do imortal
+            } else {
+                nivel = "Radiante";
+                cor = "purple"; // Cor do radiante
+            }
+
+            // Exibindo o resultado com a cor do nível
+            let resultadoElement = document.getElementById("resultado");
+            resultadoElement.innerText = `O Herói de nome ${nome} está no nível de ${nivel}.`;
+            resultadoElement.style.color = cor; // Alterando a cor do texto
+        }
+    </script>
+</body>
+</html>
